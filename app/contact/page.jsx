@@ -2,7 +2,7 @@
 const Page = () => {
     return (
         <>
-            <form name="contact" netlify>
+            <form name="contact" data-netlify="true"  className="container grid grid-cols-1 gap-4">
                 <p>
                     <label>Name <input type="text" name="name" /></label>
                 </p>
