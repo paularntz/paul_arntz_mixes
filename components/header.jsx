@@ -5,7 +5,7 @@ import netlifyLogo from 'public/netlify-logo.svg';
 const navItems = [
     { linkText: 'Home', href: '/' },
     { linkText: 'About', href: '/about' },
-    // { linkText: 'Image CDN', href: '/image-cdn' },
+    { linkText: 'Contact', href: '/contact' },
     // { linkText: 'Edge Function', href: '/edge' },
     // { linkText: 'Blobs', href: '/blobs' }
 ];
