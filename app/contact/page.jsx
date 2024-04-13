@@ -2,11 +2,17 @@
 const Page = () => {
     return (
         <>
-        <form netlify name="contact">
-            <div>Name:<input type="text" name="name" /></div>
-            <div>Email:<input type="email" name="email" /></div>
-            <div><button type="submit">Submit</button></div>
-        </form>
+            <form name="contact" netlify>
+                <p>
+                    <label>Name <input type="text" name="name" /></label>
+                </p>
+                <p>
+                    <label>Email <input type="email" name="email" /></label>
+                </p>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
         </>
     )
 }
