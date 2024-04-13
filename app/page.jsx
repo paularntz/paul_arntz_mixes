@@ -8,6 +8,11 @@ const tracks = [
       title: "Cleavage - Phenix Red",
       tags: ["RNB"],
     },
+    {
+        url:"Shout.mp3",
+        title: "Shout - PLAP Band - (PLAP)",
+        tags: ["Rock", "Pop"],
+    },
   ];
 
 export default function Page() {
