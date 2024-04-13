@@ -1,67 +1,42 @@
-import Link from 'next/link';
+"use client"
 import { Card } from 'components/card';
-import { RandomQuote } from 'components/random-quote';
-import { Markdown } from 'components/markdown';
-import { ContextAlert } from 'components/context-alert';
-import { getNetlifyContext } from 'utils';
+import Player from "@madzadev/audio-player";
+import "@madzadev/audio-player/dist/index.css";
 
-const cards = [
-    //{ text: 'Hello', linkText: 'someLink', href: '/' }
-];
-
-const contextExplainer = `
-The card below is rendered on the server based on the value of \`process.env.CONTEXT\` 
-([docs](https://docs.netlify.com/configure-builds/environment-variables/#build-metadata)):
-`;
-
-const preDynamicContentExplainer = `
-The card content below is fetched by the client-side from \`/quotes/random\` (see file \`app/quotes/random/route.js\`) with a different quote shown on each page load:
-`;
-
-const postDynamicContentExplainer = `
-On Netlify, Next.js Route Handlers are automatically deployed as [Serverless Functions](https://docs.netlify.com/functions/overview/).
-Alternatively, you can add Serverless Functions to any site regardless of framework, with acccess to the [full context data](https://docs.netlify.com/functions/api/).
-
-And as always with dynamic content, beware of layout shifts & flicker! (here, we aren't...)
-`;
-
-const ctx = getNetlifyContext();
+const tracks = [
+    {
+      url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
+      title: "Madza - Chords of Life",
+      tags: ["house"],
+    },
+    {
+      url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
+      title: "Madza - Late Night Drive",
+      tags: ["dnb"],
+    },
+    {
+      url: "https://audioplayer.madza.dev/Madza-Persistence.mp3",
+      title: "Madza - Persistence",
+      tags: ["dubstep"],
+    },
+  ];
 
 export default function Page() {
     return (
         <main className="flex flex-col gap-8 sm:gap-16">
             <section className="flex flex-col items-start gap-3 sm:gap-4">
-                <ContextAlert />
-                <h1 className="mb-0">Netlify Platform Starter - Next.js</h1>
-                <p className="text-lg">Get started with Next.js and Netlify in seconds.</p>
-                <Link
+                <h1 className="mb-0">Welcome to Paul Arntz Online</h1>
+                <p className="text-lg">Providing professional mixing service in Nashville, TN</p>
+                {/* <Link
                     href="https://docs.netlify.com/frameworks/next-js/overview/"
                     className="btn btn-lg btn-primary sm:btn-wide"
                 >
                     Read the Docs
-                </Link>
+                </Link> */}
             </section>
-            {!!ctx && (
-                <section className="flex flex-col gap-4">
-                    <Markdown content={contextExplainer} />
-                    <RuntimeContextCard />
-                </section>
-            )}
-            <section className="flex flex-col gap-4">
-                <Markdown content={preDynamicContentExplainer} />
-                <RandomQuote />
-                <Markdown content={postDynamicContentExplainer} />
-            </section>
+            <Player trackList={tracks} />
+            <Card title="Mix Example" text="Check This Out!" linkText="Go HERE" href="https://paularntz.com" />
             {/* !!cards?.length && <CardsGrid cards={cards} /> */}
         </main>
     );
-}
-
-function RuntimeContextCard() {
-    const title = `Netlify Context: running in ${ctx} mode.`;
-    if (ctx === 'dev') {
-        return <Card title={title} text="Next.js will rebuild any page you navigate to, including static pages." />;
-    } else {
-        return <Card title={title} text="This page was statically-generated at build time." />;
-    }
 }
