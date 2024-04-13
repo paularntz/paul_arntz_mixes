@@ -22,8 +22,8 @@ export default function Page() {
                 <h1 className="mb-0">Welcome to Paul Arntz Online</h1>
                 <p className="text-lg">Providing professional mixing service in Nashville, TN</p>
             </section>
-            <h2>All tracks mixed by Paul Arntz</h2>
-            <Player trackList={tracks} />
+            {/* <h2>All tracks mixed by Paul Arntz</h2>
+            <Player trackList={tracks} /> */}
         </main>
     );
 }
