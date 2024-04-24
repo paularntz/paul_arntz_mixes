@@ -1,10 +1,11 @@
 
 
 export function Audio({ tracks }) {
+    let cKey = 1;
     return (
         <div className="flex flex-wrap gap-10 max-w-full">
             {tracks.map(track =>
-            <div className="">
+            <div key={track.key}>
                 <div>
                     <strong>{track.title}</strong><br />
                     <span>{track.artist}</span>
