@@ -14,10 +14,11 @@ export default function RootLayout({ children }) {
         <html lang="en" data-theme="lofi">
             <head>
                 {/* <link rel="icon" href="/favicon.svg" sizes="any" /> */}
+                <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="z4jo4b5qm11lojx"></script>
             </head>
-            <body className="antialiased text-slate-300 bg-slate-800">
-                <div className="flex flex-col min-h-screen px-6 sm:px-12">
-                    <div className="flex flex-col w-full max-w-5xl mx-auto grow">
+            <body className="w-screen antialiased text-slate-300 bg-slate-800">
+                <div className="flex flex-col w-screen min-h-screen">
+                    <div className="flex flex-col w-screen mx-auto grow">
                         <Header />
                         <div className="grow">{children}</div>
                         <Footer />
