@@ -1,6 +1,8 @@
+"use client";  // This directive tells Next.js to treat this as a Client Component
+
 import React, { useState } from "react";
 
-export default function ContactForm() {
+export default function ContactPage() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -33,7 +35,6 @@ export default function ContactForm() {
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
       >
         <input type="hidden" name="form-name" value="contact" />
-        <input type="hidden" name="redirect" value="/thank-you" />
         <h2 className="text-2xl font-semibold text-center mb-6">Contact Us</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
