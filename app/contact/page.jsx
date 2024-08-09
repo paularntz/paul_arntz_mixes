@@ -33,6 +33,7 @@ export default function ContactPage() {
         data-netlify="true"
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
+        netlify
       >
         <input type="hidden" name="form-name" value="contact" />
         <h2 className="text-2xl font-semibold text-center mb-6">Contact Us</h2>
