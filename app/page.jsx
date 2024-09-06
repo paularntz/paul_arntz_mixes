@@ -4,7 +4,7 @@ import { Audio } from "components/audio";
 const currentTracks = [
     {
         key: "3",
-        url: "https://www.dropbox.com/scl/fi/7h6xhsx2ppq39opaxing1/2023-01-03-Cleavage-Master.mp3?rlkey=0n1pxqx3ffjzyqz5zu8401v73&st=gvn7vcog&dl=1                      ",
+        url: "https://www.dropbox.com/scl/fi/7h6xhsx2ppq39opaxing1/2023-01-03-Cleavage-Master.mp3?rlkey=0n1pxqx3ffjzyqz5zu8401v73&st=gvn7vcog&raw=1                      ",
         title: "Cleavage",
         artist: "Phenix Red",
         type: "audio/mpeg",
