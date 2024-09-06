@@ -1,31 +1,31 @@
-import fs from 'fs';
-import path from 'path';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCKGD6ZG1XwrOTPiazyDYslIa9eZWe4A2A",
+  authDomain: "paul-arntz-online-messages.firebaseapp.com",
+  projectId: "paul-arntz-online-messages",
+  storageBucket: "paul-arntz-online-messages.appspot.com",
+  messagingSenderId: "397713359430",
+  appId: "1:397713359430:web:ba63f398337d13d6be0047",
+  measurementId: "G-NE23BBN2W7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export async function POST(req) {
   try {
     const { name, email, phone, message } = await req.json();
     const timestamp = new Date().toISOString();
 
-    // Ensure the messages directory exists
-    const messagesDir = path.join(process.cwd(), 'public/messages');
-    if (!fs.existsSync(messagesDir)) {
-      fs.mkdirSync(messagesDir, { recursive: true });
-    }
-
-    // Create a new message file
-    const fileName = `${timestamp}.json`;
-    const filePath = path.join(messagesDir, fileName);
-
-    const messageData = {
+    await addDoc(collection(db, 'messages'), {
       name,
       email,
       phone,
       message,
       date: timestamp,
-    };
-
-    // Write the message to the file system
-    fs.writeFileSync(filePath, JSON.stringify(messageData, null, 2));
+    });
 
     return new Response(JSON.stringify({ status: 'success' }), {
       status: 200,
