@@ -1,61 +1,46 @@
-"use client";
+"use client"
+import { useState, useEffect } from 'react';
+//import { useRouter } from 'next/router'; // Always import useRouter
+import Cookies from 'js-cookie';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+export default function Login() {
+  const [password, setPassword] = useState('wrongpass');
+  const [isMounted, setIsMounted] = useState(false);
 
-export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const router = useRouter();
+  useEffect(() => {
+    // Ensure that this component is only rendered client-side
+    setIsMounted(true);
+  }, []);
 
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (password === 'PPdaGnd24!') {
+      Cookies.set('authorized', 'true', { expires: 1 }); // Set the cookie for 1 day
+      
+      alert('Going back to the previous page');
 
-    // Simple mock authentication
-    if (username === 'admin' && password === 'password') {
-      // Set a cookie for authentication
-      document.cookie = 'auth-token=valid-token; path=/';
-      router.push('/messages'); // Redirect to the protected route
+      // Take the user back one page in history
+      window.history.back();
+
     } else {
-      alert('Invalid credentials');
+      alert('Incorrect password');
     }
   };
 
+  if (!isMounted) {
+    return null; // Avoid rendering until client-side mounting is confirmed
+  }
+
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Login</h1>
-      <form onSubmit={handleLogin} className="space-y-4">
-        <div>
-          <label htmlFor="username" className="block font-semibold">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="w-full p-2 border rounded"
-          />
-        </div>
-        <div>
-          <label htmlFor="password" className="block font-semibold">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full p-2 border rounded"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-        >
-          Login
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h2>Password Protected</h2>
+      <input
+        type="password"
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
   );
 }

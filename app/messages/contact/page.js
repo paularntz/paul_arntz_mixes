@@ -33,7 +33,9 @@ export default function ContactForm() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+      <h1 className="text-3xl font-bold mb-6">Please feel free to send a message!</h1>
+      <p>Let's chat about your project.</p>
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block font-semibold">Name</label>
