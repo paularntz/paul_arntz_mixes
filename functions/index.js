@@ -25,10 +25,10 @@ admin.initializeApp();
 
 // Nodemailer configuration
 let transporter = nodemailer.createTransport({
-  service: 'gmail', // You can use any email provider
+  service: 'gmail',
   auth: {
-    user: 'paularntz@gmail.com',
-    pass: 'GPdaGnd15!',
+    user: functions.config().gmail.email,  // Accessing the email variable
+    pass: functions.config().gmail.password,  // Accessing the password variable
   },
 });
 
