@@ -5,9 +5,9 @@ export default function About() {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
       <p className="text-lg mb-4">
-        Since 1994, I've been fully immersed in the world of music production
+        Since 1994, I&apos;ve been fully immersed in the world of music production
         and mixing, working in both live settings and studios to help artists
-        achieve the sound they’ve always envisioned. My journey began in
+        achieve the sound they&apos;ve always envisioned. My journey began in
         Michigan, where I grew up, and after high school, I went on to study
         classical guitar with a focus on theory and composition at Spring Arbor
         University. These studies gave me a deep understanding of the technical
@@ -17,9 +17,9 @@ export default function About() {
       <p className="text-lg mb-4">
         In 1994, I made the move to Nashville, TN, and have been working
         non-stop in the studio as a producer and mix engineer. Over the years,
-        I've had the privilege of collaborating with a diverse array of artists,
+        I&apos;ve had the privilege of collaborating with a diverse array of artists,
         including Lee Greenwood, Joey Belladonna of Anthrax (Beyond Frontiers),
-        Phenix Red, Chris West, and the Mixtape 80's Tribute Band, to name just
+        Phenix Red, Chris West, and the Mixtape 80&apos;s Tribute Band, to name just
         a few.
       </p>
       <p className="text-lg mb-4">
@@ -27,14 +27,14 @@ export default function About() {
         it, I found myself drawn as much to the production and mix of a song as
         to the music itself. When I discovered music that had both—a perfect
         blend of artistry and sonic clarity—I was hooked. Albums like Steely
-        Dan’s <em>Aja</em> and Toy Matinee were the catalysts for my journey of
+        Dan&apos;s <em>Aja</em> and Toy Matinee were the catalysts for my journey of
         critical listening, and they remain key influences on my work. Figuring
         out exactly why those records sound so incredible has been a lifelong
         passion of mine, and now, helping you bring your music to life
         is what I do.
       </p>
       <p className="text-lg mb-4">
-        To me, mixing is an art form, but it’s also deeply collaborative. My
+        To me, mixing is an art form, but it&apos;s also deeply collaborative. My
         role as a mix engineer is to connect with you on a musical level,
         understanding the nuances of your vision, so I can deliver a sonic
         quality that elevates your art without compromising its original intent.
