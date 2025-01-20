@@ -56,7 +56,7 @@ const currentTracks = [
 export default function Page() {
     return (
         <main className="flex flex-col gap-8 sm:gap-16">
-            <section className="bg-slate-950 w-screen p-9">
+            <section className="w-screen p-9">
                 <h1 className="text-2xl">A Few Examples</h1>
                 <Audio tracks={currentTracks} />
             </section>
