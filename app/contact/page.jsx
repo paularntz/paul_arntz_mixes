@@ -30,10 +30,8 @@ export default function ContactPage() {
       <form
         name="contact"
         method="POST"
-        data-netlify="true"
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
-        netlify
       >
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="redirect" value="/thank-you" />
