@@ -34,8 +34,8 @@ export default function ContactForm() {
   return (
     <div className="container mx-auto p-6">
       <div style={{ marginBottom: 50 }} >
-        <h1 className="text-3xl font-bold mb-6">Please feel free to send a message!</h1>
-        <p>Let&lsquo;s chat about your project.</p>
+      <h1 className="text-3xl font-bold mb-6">Call Me: (615) 390-3848</h1>
+        <h1 className="text-3xl font-bold mb-6">Leave A Message:</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
