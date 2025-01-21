@@ -1,35 +1,62 @@
-import Image from 'next/image';
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
-import netlifyLogo from 'public/netlify-logo.svg';
+import { LuAudioLines } from "react-icons/lu";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const navItems = [
     { linkText: 'Home', href: '/' },
-    // { linkText: 'About', href: '/about' },
-    // { linkText: 'Contact', href: '/messages/contact' },
-    // { linkText: 'Edge Function', href: '/edge' },
-    // { linkText: 'Blobs', href: '/blobs' }
+    { linkText: 'Contact', href: '/messages/contact' },
 ];
 
 export function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
-        <nav className="flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
-            {/* <Link href="/">
-                <Image src={netlifyLogo} alt="Netlify logo" />
-            </Link> */}
-            {!!navItems?.length && (
-                <ul className="flex flex-wrap gap-x-4 gap-y-1">
+        <nav
+            className="relative bg-black text-white"
+        >
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 bg-[url('/images/S51.jpg')] bg-cover bg-center">
+                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 flex items-center justify-between px-4 py-4 sm:px-6 sm:py-20">
+                {/* Logo and site name */}
+                <Link href="/" className="flex items-center no-underline">
+                    <LuAudioLines className="text-white h-10 w-auto mr-4" />
+                    <span className="text-3xl font-bold">Paul Arntz Online</span>
+                </Link>
+
+                {/* Hamburger Menu Button */}
+                <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="text-white text-3xl sm:hidden focus:outline-none z-50"
+                >
+                    {isMenuOpen ? <FiX /> : <FiMenu />}
+                </button>
+
+                {/* Navigation menu */}
+                <ul
+                    className={`${
+                        isMenuOpen ? 'flex' : 'hidden'
+                    } flex-col items-center absolute top-full left-0 w-full bg-black sm:static sm:w-auto sm:flex sm:flex-row sm:gap-4`}
+                >
                     {navItems.map((item, index) => (
-                        <li key={index}>
+                        <li key={index} className="w-full sm:w-auto text-center sm:text-left">
                             <Link
                                 href={item.href}
-                                className="inline-block px-1.5 py-1 transition hover:opacity-80 sm:px-3 sm:py-2"
+                                className="block w-full sm:w-auto px-4 py-2 text-black font-bold bg-white rounded-lg transition-all duration-300 hover:bg-black hover:text-white no-underline"
+                                onClick={() => setIsMenuOpen(false)} // Close the menu after clicking
                             >
                                 {item.linkText}
                             </Link>
                         </li>
                     ))}
                 </ul>
-            )}
+            </div>
         </nav>
     );
 }

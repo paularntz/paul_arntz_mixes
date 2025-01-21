@@ -33,7 +33,11 @@ export default function ContactForm() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+      <div style={{ marginBottom: 50 }} >
+        <h1 className="text-3xl font-bold mb-6">Please feel free to send a message!</h1>
+        <p>Let&lsquo;s chat about your project.</p>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block font-semibold">Name</label>
@@ -44,7 +48,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-black"
           />
         </div>
         <div>
@@ -56,7 +60,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-black"
           />
         </div>
         <div>
@@ -67,7 +71,7 @@ export default function ContactForm() {
             id="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-black"
           />
         </div>
         <div>
@@ -78,7 +82,7 @@ export default function ContactForm() {
             required
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-black"
             rows="5"
           />
         </div>

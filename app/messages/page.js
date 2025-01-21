@@ -1,53 +1,71 @@
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import RemoveButton from 'components/RemoveButton';
+// app/messages/page.js
+"use client"
+import { useState, useEffect } from 'react';
+import { db, collection, getDocs, deleteDoc, doc } from '../../firebase'; // Import deleteDoc and doc
 
-export default async function MessagesList() {
-  const directoryPath = path.join(process.cwd(), 'public/messages');
-  const files = fs.readdirSync(directoryPath);
+export default function MessagesPage() {
+  const [messages, setMessages] = useState([]);
 
-  const messages = files.map((file) => {
-    const filePath = path.join(directoryPath, file);
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        // Reference to the 'messages' collection
+        const messagesCollection = collection(db, 'messages');
+        // Fetch the documents
+        const messageSnapshot = await getDocs(messagesCollection);
+        // Extract the data
+        const messageList = messageSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        // Set the state
+        setMessages(messageList);
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+
+  const handleDelete = async (id) => {
     try {
-      const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-      return { ...content, fileName: file };
+      // Reference to the document to delete
+      const messageDoc = doc(db, 'messages', id);
+      // Delete the document
+      await deleteDoc(messageDoc);
+      // Remove the deleted message from state
+      setMessages(messages.filter(message => message.id !== id));
     } catch (error) {
-      console.error(`Error parsing JSON in file: ${filePath}`, error);
-      return null;
+      console.error('Error deleting message:', error);
     }
-  }).filter(Boolean);
+  };
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Messages</h1>
-      <table className="w-full text-left border">
-        <thead>
-          <tr>
-            <th className="border px-4 py-2">Name</th>
-            <th className="border px-4 py-2">Email</th>
-            <th className="border px-4 py-2">Phone</th>
-            <th className="border px-4 py-2">Date/Time</th>
-            <th className="border px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {messages.map((message, index) => (
-            <tr key={index}>
-              <td className="border px-4 py-2">{message.name}</td>
-              <td className="border px-4 py-2">{message.email}</td>
-              <td className="border px-4 py-2">{message.phone || 'N/A'}</td>
-              <td className="border px-4 py-2">{new Date(message.date).toLocaleString()}</td>
-              <td className="border px-4 py-2">
-                <Link href={`/messages/${message.fileName}`}>
-                  <span className="text-blue-500 hover:underline">View</span>
-                </Link>
-                <RemoveButton fileName={message.fileName} />
-              </td>
-            </tr>
+      {messages.length === 0 ? (
+        <p>No messages yet.</p>
+      ) : (
+        <ul className="space-y-4">
+          {messages.map((message) => (
+            <li key={message.id} className="p-4 border rounded">
+              <p><strong>Name:</strong> {message.name}</p>
+              <p><strong>Email:</strong> {message.email}</p>
+              <p><strong>Phone:</strong> {message.phone}</p>
+              <p><strong>Message:</strong> {message.message}</p>
+              <p><strong>Date:</strong> {message.date}</p>
+              <button
+                onClick={() => handleDelete(message.id)}
+                className="bg-red-500 text-white p-2 rounded hover:bg-red-600 mt-2"
+              >
+                Delete
+              </button>
+            </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
+      )}
     </div>
   );
 }
+
