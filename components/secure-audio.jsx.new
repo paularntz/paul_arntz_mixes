@@ -4,21 +4,6 @@ import { useEffect, useRef, createContext, useContext, useState } from 'react';
 // Create a context to manage the currently playing audio
 const AudioContext = createContext();
 
-// Global audio manager to ensure only one audio plays at a time
-const audioManager = {
-    activeAudio: null,
-    stopAll: function() {
-        if (this.activeAudio) {
-            this.activeAudio.pause();
-            this.activeAudio = null;
-        }
-    },
-    setActive: function(audio) {
-        this.stopAll();
-        this.activeAudio = audio;
-    }
-};
-
 // Loading spinner component
 function LoadingSpinner() {
     return (
@@ -67,11 +52,14 @@ function SecureAudioPlayer({ url, type }) {
                 }
             };
 
-            // Handle actual playback start
+            // Handle play event
             const handlePlay = () => {
-                // Stop all other audio first
-                audioManager.stopAll();
-                audioManager.setActive(audio);
+                // If there's another audio playing and it's not this one, pause it
+                if (currentlyPlayingRef.current && currentlyPlayingRef.current !== audio) {
+                    currentlyPlayingRef.current.pause();
+                }
+                // Update the currently playing audio
+                currentlyPlayingRef.current = audio;
                 setIsLoading(true);
                 setHasStartedPlaying(true);
             };
@@ -89,17 +77,11 @@ function SecureAudioPlayer({ url, type }) {
 
             const handlePause = () => {
                 setIsLoading(false);
-                if (audioManager.activeAudio === audio) {
-                    audioManager.activeAudio = null;
-                }
             };
 
             const handleEnded = () => {
                 setIsLoading(false);
                 setHasStartedPlaying(false);
-                if (audioManager.activeAudio === audio) {
-                    audioManager.activeAudio = null;
-                }
             };
             
             audio.addEventListener('play', handlePlay);
@@ -162,26 +144,23 @@ function SecureAudioPlayer({ url, type }) {
 
                 /* Main controls panel styling */
                 audio::-webkit-media-controls-panel {
-                    background: rgba(30, 41, 59, 0.95) !important;
+                    background: rgba(45, 59, 79, 0.5) !important;
                     border-radius: 8px;
                     padding: 8px;
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
                 }
 
                 /* Time display styling */
                 audio::-webkit-media-controls-current-time-display,
                 audio::-webkit-media-controls-time-remaining-display {
-                    color: #FFFFFF !important;
+                    color: #E5E7EB !important;
                     font-family: -apple-system, system-ui, sans-serif;
                     font-size: 13px;
-                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
                 }
 
                 /* Timeline and controls styling */
                 audio::-webkit-media-controls-play-button,
                 audio::-webkit-media-controls-timeline {
-                    filter: invert(1) brightness(2);
+                    filter: invert(1) brightness(1.8);
                 }
 
                 /* Adjust spacing between elements */

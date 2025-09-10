@@ -72,8 +72,8 @@ export default function MixesPage() {
     return (
         <PasswordProtect>
             <div className="container mx-auto px-4 py-8">
-                <h1 className="text-4xl font-bold mb-8">Jeff Berlin Mixes</h1>
-                <div className="mb-4 text-sm text-gray-600">
+                <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white">Jeff Berlin Mixes</h1>
+                <div className="mb-6 text-base md:text-lg text-gray-300">
                     These recordings are for private listening only. Please do not download or distribute.
                 </div>
                 <style jsx global>{`

@@ -1,14 +1,34 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Check if session is still valid
+const isSessionValid = () => {
+    if (typeof window === 'undefined') return false;
+    
+    const expiryTime = localStorage.getItem('authExpiry');
+    if (!expiryTime) return false;
+    
+    return parseInt(expiryTime) > Date.now();
+};
 
 export function PasswordProtect({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    // Check authentication on component mount
+    useEffect(() => {
+        if (isSessionValid()) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password.toLowerCase() === 'stevie') {
+            // Set expiry to 1 hour from now
+            const expiryTime = Date.now() + (60 * 60 * 1000);
+            localStorage.setItem('authExpiry', expiryTime.toString());
             setIsAuthenticated(true);
             setError('');
         } else {
