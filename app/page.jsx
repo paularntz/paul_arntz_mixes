@@ -1,10 +1,10 @@
 "use client"
-import { Audio } from "components/audio";
+import { Audio } from "components/secure-audio";
 
 const currentTracks = [
     {
         key: "3",
-        url: "https://www.dropbox.com/scl/fi/7h6xhsx2ppq39opaxing1/2023-01-03-Cleavage-Master.mp3?rlkey=0n1pxqx3ffjzyqz5zu8401v73&st=gvn7vcog&raw=1                      ",
+        url: "https://www.dropbox.com/scl/fi/7h6xhsx2ppq39opaxing1/2023-01-03-Cleavage-Master.mp3?rlkey=0n1pxqx3ffjzyqz5zu8401v73&st=gvn7vcog&raw=1",
         title: "Cleavage",
         artist: "Phenix Red",
         type: "audio/mpeg",
@@ -57,8 +57,27 @@ export default function Page() {
     return (
         <main className="flex flex-col gap-8 sm:gap-16">
             <section className="w-screen p-9">
-                <h1 className="text-2xl">A Few Examples</h1>
-                <Audio tracks={currentTracks} />
+                <h1 className="text-3xl md:text-4xl font-semibold text-white mb-6">A Few Examples</h1>
+                <div className="text-base md:text-lg text-gray-300 mb-8">
+                    A selection of mixing and mastering examples across various genres.
+                </div>
+                <style jsx global>{`
+                    audio::-internal-media-controls-download-button {
+                        display: none;
+                    }
+                    audio::-webkit-media-controls-download-button {
+                        display: none;
+                    }
+                    audio::-webkit-media-controls-enclosure {
+                        overflow: hidden;
+                    }
+                    audio::-webkit-media-controls-panel {
+                        width: calc(100% + 30px);
+                    }
+                `}</style>
+                <div className="max-w-7xl mx-auto">
+                    <Audio tracks={currentTracks} layout="grid" />
+                </div>
             </section>
         </main>
     );

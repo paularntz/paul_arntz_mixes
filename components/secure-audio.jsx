@@ -28,17 +28,21 @@ function LoadingSpinner() {
     );
 }
 
-export function Audio({ tracks }) {
+export function Audio({ tracks, layout = "list" }) {
     const currentlyPlayingRef = useRef(null);
+
+    const gridClass = layout === "grid" 
+        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        : "grid gap-10";
 
     return (
         <AudioContext.Provider value={{ currentlyPlayingRef }}>
-            <div className="grid gap-10 max-w-4xl mx-auto">
+            <div className={gridClass}>
                 {tracks.map(track => (
                     <div key={track.key} className="w-full">
                         <div className="mb-4">
-                            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-1">{track.title}</h2>
-                            <div className="text-base text-gray-400">{track.artist}</div>
+                            <h2 className="text-xl md:text-2xl font-semibold text-white mb-1 line-clamp-1">{track.title}</h2>
+                            <div className="text-sm md:text-base text-gray-400">{track.artist}</div>
                         </div>
                         <SecureAudioPlayer url={track.url} type={track.type} />
                     </div>
