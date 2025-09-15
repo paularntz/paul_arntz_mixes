@@ -20,7 +20,7 @@ const tracks = [
     {
         key: "1",
         url: "https://www.dropbox.com/scl/fi/iw6vyxcevbos2avpilts9/2025-09-08-Pile-Driving-Miss-Daisy.wav?rlkey=bfo96ksayzpubjv9e93eea3p6&raw=1",
-        title: "Pile Driving Miss Daisy",
+        title: "Joe Mama",
         artist: "Jeff Berlin",
         type: "audio/wav",
     },
