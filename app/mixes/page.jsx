@@ -20,7 +20,7 @@ const tracks = [
     {
         key: "1",
         url: "https://www.dropbox.com/scl/fi/4yorck0oej4d28bvw9606/2025-09-14-Pile-Driving-Miss-Daisy.wav?rlkey=24q1wquox140baf4gn770dzsz&raw=1",
-        title: "Joe Mama",
+        title: "Tasteless and Offensive",
         artist: "Jeff Berlin",
         type: "audio/wav",
     },
