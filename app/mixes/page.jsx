@@ -41,7 +41,7 @@ const tracks = [
     {
         key: "4",
         url: "https://www.dropbox.com/scl/fi/865qsnlkflxln7nrqyebn/2025-09-02-02-Tears-In-Heaven.wav?rlkey=odakqplyki53e8cyke7w3ujxc&raw=1",
-        title: "Tears In Heaven",
+        title: "Psalm Thing",
         artist: "Jeff Berlin",
         type: "audio/wav",
     },
@@ -55,7 +55,7 @@ const tracks = [
     {
         key: "9",
         url: "https://www.dropbox.com/scl/fi/ejca9241zklt7o45zo8ro/2025-08-27-02-Two-Thoughts.wav?rlkey=orvwtxoz7bou3xii2jgw1nky4&raw=1",
-        title: "Two Thoughts",
+        title: "Owed to Joy",
         artist: "Jeff Berlin",
         type: "audio/wav",
     },
