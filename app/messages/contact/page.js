@@ -39,9 +39,6 @@ export default function ContactForm() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Let&apos;s Get Started
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Ready to take your project to the next level? I&apos;d love to hear about your vision and discuss how we can bring it to life.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
