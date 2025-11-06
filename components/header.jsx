@@ -8,6 +8,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 const navItems = [
     { linkText: 'Home', href: '/' },
     { linkText: 'About Me', href: '/about' },
+    { linkText: 'Video Post-Production', href: '/video-post-production' },
     { linkText: 'Contact', href: '/messages/contact' },
 ];
 

@@ -44,14 +44,27 @@ export default async function Page() {
     }
 
     return (
-        <>
-            <h1>Revalidation Basics</h1>
-            <Markdown content={explainer} />
-            <form className="mt-4" action={revalidateWiki}>
-                <SubmitButton text="Click to Revalidate" />
-            </form>
-            <RandomWikiArticle />
-        </>
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+            <div className="container mx-auto px-4 py-12 max-w-6xl">
+                <div className="text-center mb-16">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                        Revalidation Basics
+                    </h1>
+                    <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+                </div>
+
+                <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl mb-8">
+                    <Markdown content={explainer} />
+                    <form className="mt-8" action={revalidateWiki}>
+                        <div className="text-center">
+                            <SubmitButton text="Click to Revalidate" />
+                        </div>
+                    </form>
+                </div>
+
+                <RandomWikiArticle />
+            </div>
+        </div>
     );
 }
 
@@ -67,14 +80,27 @@ async function RandomWikiArticle() {
     }
 
     return (
-        <div className="bg-white text-neutral-600 card my-6 max-w-2xl">
-            <div className="card-title text-3xl px-8 pt-8">{content.title}</div>
-            <div className="card-body py-4">
-                <div className="text-lg font-bold">{content.description}</div>
-                <p className="italic">{extract}</p>
-                <a target="_blank" rel="noopener noreferrer" href={content.content_urls.desktop.page}>
-                    From Wikipedia
-                </a>
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 shadow-2xl max-w-3xl mx-auto">
+            <div className="text-center mb-6">
+                <h2 className="text-3xl font-bold text-white mb-2">{content.title}</h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+            </div>
+            <div className="space-y-4">
+                <div className="text-xl font-semibold text-blue-400">{content.description}</div>
+                <p className="text-gray-300 leading-relaxed italic">{extract}</p>
+                <div className="pt-4">
+                    <a 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        href={content.content_urls.desktop.page}
+                        className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                        <span>Read more on Wikipedia</span>
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     );

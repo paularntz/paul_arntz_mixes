@@ -71,31 +71,65 @@ const tracks = [
 export default function MixesPage() {
     return (
         <PasswordProtect>
-            <main className="flex flex-col gap-8 sm:gap-16">
-                <section className="w-screen p-9">
-                    <h1 className="text-3xl md:text-4xl font-semibold text-white mb-6">Jeff Berlin Mixes</h1>
-                    <div className="text-base md:text-lg text-gray-300 mb-8">
-                        These recordings are for private listening only. Please do not download or distribute.
+            <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+                <div className="container mx-auto px-4 py-12 max-w-7xl">
+                    {/* Header Section */}
+                    <div className="text-center mb-12">
+                        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                            Jeff Berlin Mixes
+                        </h1>
+                        <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-xl p-6 max-w-3xl mx-auto">
+                            <div className="flex items-center justify-center mb-3">
+                                <svg className="w-6 h-6 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                                <span className="text-yellow-300 font-semibold">Private Collection</span>
+                            </div>
+                            <p className="text-yellow-200 leading-relaxed">
+                                These recordings are for private listening only. Please do not download or distribute.
+                            </p>
+                        </div>
                     </div>
-                    <style jsx global>{`
-                        audio::-internal-media-controls-download-button {
-                            display: none;
-                        }
-                        audio::-webkit-media-controls-download-button {
-                            display: none;
-                        }
-                        audio::-webkit-media-controls-enclosure {
-                            overflow: hidden;
-                        }
-                        audio::-webkit-media-controls-panel {
-                            width: calc(100% + 30px);
-                        }
-                    `}</style>
-                    <div className="max-w-7xl mx-auto">
+
+                    {/* Audio Collection */}
+                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Exclusive Audio Collection</h2>
+                            <p className="text-gray-300 max-w-2xl mx-auto">
+                                A curated selection of Jeff Berlin's latest compositions and performances, 
+                                mixed and mastered with precision and artistic vision.
+                            </p>
+                        </div>
+
+                        <style jsx global>{`
+                            audio::-internal-media-controls-download-button {
+                                display: none;
+                            }
+                            audio::-webkit-media-controls-download-button {
+                                display: none;
+                            }
+                            audio::-webkit-media-controls-enclosure {
+                                overflow: hidden;
+                            }
+                            audio::-webkit-media-controls-panel {
+                                width: calc(100% + 30px);
+                            }
+                        `}</style>
+                        
                         <Audio tracks={tracks} layout="grid" />
                     </div>
-                </section>
-            </main>
+
+                    {/* Footer Note */}
+                    <div className="text-center mt-12">
+                        <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                All tracks are mixed and mastered by Paul Arntz. For inquiries about similar work, 
+                                please <a href="/messages/contact" className="text-blue-400 hover:text-blue-300 transition-colors">get in touch</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </PasswordProtect>
     );
 }
