@@ -1,16 +1,12 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Contact Form</title>
-</head>
-<body>
-    <!-- This hidden form is for Netlify to detect the form fields during build -->
-    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <textarea name="message"></textarea>
-        <input type="hidden" name="form-name" value="contact" />
+  <head></head>
+  <body>
+    <form name="contact" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <input name="phone" type="tel" />
+      <textarea name="message"></textarea>
     </form>
-</body>
+  </body>
 </html>

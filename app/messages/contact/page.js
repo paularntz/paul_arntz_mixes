@@ -1,49 +1,28 @@
-// app/messages/contact/page.js
 "use client"
 
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     setIsSubmitting(true);
-
+    
+    const formData = new FormData(event.target);
+    
     try {
-      const response = await fetch("/", {
+      await fetch("/contact-form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          ...formData
-        })
+        body: new URLSearchParams(formData).toString()
       });
       
-      if (response.ok) {
-        // Show success message and redirect
-        alert('I have received your message and will get back to you ASAP.\n\nThank You,\nPaul');
-        // Reset form
-        setFormData({ name: '', email: '', phone: '', message: '' });
-      } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      // Show success message
+      alert('I have received your message and will get back to you ASAP.\n\nThank You,\nPaul');
+      
+      // Reset form
+      event.target.reset();
     } catch (error) {
       console.error('Form submission error:', error);
       alert('Failed to send message. Please try again.');
@@ -59,12 +38,7 @@ export default function ContactForm() {
         <h1 className="text-3xl font-bold mb-6">Leave A Message:</h1>
       </div>
 
-      <form 
-        onSubmit={handleSubmit}
-        data-netlify="true" 
-        data-netlify-honeypot="bot-field"
-        className="space-y-4"
-      >
+      <form name="contact" onSubmit={handleFormSubmit} className="space-y-4">
         <input type="hidden" name="form-name" value="contact" />
         
         <div>
@@ -74,8 +48,6 @@ export default function ContactForm() {
             name="name"
             id="name"
             required
-            value={formData.name}
-            onChange={handleChange}
             disabled={isSubmitting}
             className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
@@ -88,8 +60,6 @@ export default function ContactForm() {
             name="email"
             id="email"
             required
-            value={formData.email}
-            onChange={handleChange}
             disabled={isSubmitting}
             className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
@@ -101,8 +71,6 @@ export default function ContactForm() {
             type="tel"
             name="phone"
             id="phone"
-            value={formData.phone}
-            onChange={handleChange}
             disabled={isSubmitting}
             className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
@@ -114,8 +82,6 @@ export default function ContactForm() {
             name="message"
             id="message"
             required
-            value={formData.message}
-            onChange={handleChange}
             disabled={isSubmitting}
             className="w-full p-2 border rounded text-black disabled:bg-gray-200"
             rows="5"

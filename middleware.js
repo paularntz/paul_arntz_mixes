@@ -8,6 +8,11 @@ export function middleware(req) {
   const protectedPath = '/messages';
   const openPaths = ['/messages/contact', '/messages/thank-you'];
 
+  // Allow access to static files and form endpoints
+  if (pathname.startsWith('/contact-form.html') || pathname.startsWith('/_next/') || pathname.startsWith('/public/')) {
+    return NextResponse.next();
+  }
+
   // Check if the user is already authenticated
   const isAuthenticated = req.cookies.get('authorized');
 
