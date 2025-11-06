@@ -169,11 +169,10 @@ export default function Page() {
                 <div className="text-center">
                     <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                            Ready to Work Together?
+                            Let&apos;s Make It Happen.
                         </h3>
                         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                            Whether you&apos;re working on your next single, album, or audio project, 
-                            let&apos;s discuss how we can bring your vision to life.
+                            From your next track or record to complete video post-production, we&apos;ll shape it into something that feels and sounds exactly right.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a 
