@@ -1,5 +1,57 @@
 // app/messages/contact/page.js
+"use client"
+
+import { useState } from 'react';
+
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...formData
+        })
+      });
+      
+      if (response.ok) {
+        // Show success message and redirect
+        alert('I have received your message and will get back to you ASAP.\n\nThank You,\nPaul');
+        // Reset form
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="container mx-auto p-6">
       <div style={{ marginBottom: 50 }}>
@@ -8,20 +60,12 @@ export default function ContactForm() {
       </div>
 
       <form 
-        name="contact" 
-        method="POST" 
-        action="/messages/thank-you"
+        onSubmit={handleSubmit}
         data-netlify="true" 
         data-netlify-honeypot="bot-field"
         className="space-y-4"
       >
         <input type="hidden" name="form-name" value="contact" />
-        
-        <p className="hidden">
-          <label>
-            Don't fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
         
         <div>
           <label htmlFor="name" className="block font-semibold">Name</label>
@@ -30,7 +74,10 @@ export default function ContactForm() {
             name="name"
             id="name"
             required
-            className="w-full p-2 border rounded text-black"
+            value={formData.name}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
         </div>
         
@@ -41,7 +88,10 @@ export default function ContactForm() {
             name="email"
             id="email"
             required
-            className="w-full p-2 border rounded text-black"
+            value={formData.email}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
         </div>
         
@@ -51,7 +101,10 @@ export default function ContactForm() {
             type="tel"
             name="phone"
             id="phone"
-            className="w-full p-2 border rounded text-black"
+            value={formData.phone}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className="w-full p-2 border rounded text-black disabled:bg-gray-200"
           />
         </div>
         
@@ -61,16 +114,20 @@ export default function ContactForm() {
             name="message"
             id="message"
             required
-            className="w-full p-2 border rounded text-black"
+            value={formData.message}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className="w-full p-2 border rounded text-black disabled:bg-gray-200"
             rows="5"
           />
         </div>
         
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          disabled={isSubmitting}
+          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
-          Submit
+          {isSubmitting ? 'Sending...' : 'Submit'}
         </button>
       </form>
     </div>

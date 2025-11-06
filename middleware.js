@@ -6,13 +6,13 @@ export function middleware(req) {
 
   // Define the paths that need protection
   const protectedPath = '/messages';
-  const openPath = '/messages/contact';
+  const openPaths = ['/messages/contact', '/messages/thank-you'];
 
   // Check if the user is already authenticated
   const isAuthenticated = req.cookies.get('authorized');
 
-  // If the path is /messages but not /messages/contact
-  if (pathname.startsWith(protectedPath) && pathname !== openPath) {
+  // If the path is /messages but not in the open paths list
+  if (pathname.startsWith(protectedPath) && !openPaths.includes(pathname)) {
     // If the user is not authenticated, redirect to the login page or show a password prompt
     if (!isAuthenticated) {
       const loginUrl = new URL('/login', req.url); // Assuming you have a /login page for password entry
