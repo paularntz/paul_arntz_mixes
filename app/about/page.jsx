@@ -44,7 +44,7 @@ export default function About() {
               Ready to Elevate Your Project?
             </h2>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Let&apos;s collaborate to bring your vision to life—whether it&apos;s music production, mixing, or video post-production audio.
+              Let&apos;s make something great together — whether it&apos;s music production, mixing, or post for your video project.
             </p>
             <a 
               href="/messages/contact" 
