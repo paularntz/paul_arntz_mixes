@@ -35,13 +35,12 @@ export default function ContactForm() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Let's Connect
+                <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Let&apos;s Get Started
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Ready to bring your audio vision to life? I'd love to hear about your project 
-            and discuss how we can create something amazing together.
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Ready to take your project to the next level? I&apos;d love to hear about your vision and discuss how we can bring it to life.
           </p>
         </div>
 

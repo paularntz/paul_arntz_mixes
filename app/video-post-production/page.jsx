@@ -48,11 +48,11 @@ export default function VideoPostProduction() {
         <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl mb-16">
           <div className="text-lg md:text-xl text-gray-300 leading-relaxed space-y-8">
             <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-blue-400 first-letter:mr-3 first-letter:float-left first-letter:leading-none">
-              The same attention to detail I bring to music production carries over into my video post-production work. Whether it's editing, color, sound, or the final polish, my goal is to make sure what people see and what they hear feel completely connected — because great video only works when both are working together.
+              The same attention to detail I bring to music production carries over into my video post-production work. Whether it&apos;s editing, color, sound, or the final polish, my goal is to make sure what people see and what they hear feel completely connected — because great video only works when both are working together.
             </p>
             
             <p>
-              I approach post-production the same way I approach mixing: it's all about the story. Once I understand the emotion you want to convey, I shape both the visual flow and the sonic landscape to support it. That might mean tightening the edit for impact, grading for tone and consistency, cleaning up dialogue, layering in sound design, or balancing everything so it feels natural and immersive.
+              I approach post-production the same way I approach mixing: it&apos;s all about the story. Once I understand the emotion you want to convey, I shape both the visual flow and the sonic landscape to support it. That might mean tightening the edit for impact, grading for tone and consistency, cleaning up dialogue, layering in sound design, or balancing everything so it feels natural and immersive.
             </p>
             
             <p>
@@ -60,7 +60,7 @@ export default function VideoPostProduction() {
             </p>
             
             <p>
-              Technical standards today are higher than ever, and I'm fully equipped to meet them — <span className="text-purple-400 font-medium">4K video</span>, <span className="text-purple-400 font-medium">HDR color</span>, <span className="text-purple-400 font-medium">stereo mixing</span>, and all the details that make content look and sound its best. But what really matters is the end result: something that doesn't just look and sound right, but feels alive. Every cut, every color, every fade is there to serve the story.
+              Technical standards today are higher than ever, and I&apos;m fully equipped to meet them — <span className="text-purple-400 font-medium">4K video</span>, <span className="text-purple-400 font-medium">HDR color</span>, <span className="text-purple-400 font-medium">stereo mixing</span>, and all the details that make content look and sound its best. But what really matters is the end result: something that doesn&apos;t just look and sound right, but feels alive. Every cut, every color, every fade is there to serve the story.
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function VideoPostProduction() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Editing & Post-Production</h3>
               <p className="text-gray-300">
-                Video assembly, color grading, motion graphics, dialogue cleanup, sound design, and music integration all work together to build your story's foundation.
+                Video assembly, color grading, motion graphics, dialogue cleanup, sound design, and music integration all work together to build your story&apos;s foundation.
               </p>
             </div>
             
@@ -108,7 +108,7 @@ export default function VideoPostProduction() {
               Ready to Elevate Your Video Project?
             </h2>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Let's discuss how professional video and audio post-production can enhance your visual storytelling and create a truly immersive experience for your audience.
+              Let&apos;s discuss how professional video and audio post-production can enhance your visual storytelling and create a truly immersive experience for your audience.
             </p>
             <a 
               href="/messages/contact" 

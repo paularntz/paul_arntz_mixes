@@ -96,7 +96,7 @@ export default function MixesPage() {
                         <div className="text-center mb-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Exclusive Audio Collection</h2>
                             <p className="text-gray-300 max-w-2xl mx-auto">
-                                A curated selection of Jeff Berlin's latest compositions and performances, 
+                                A curated selection of Jeff Berlin&apos;s latest compositions and performances, 
                                 mixed and mastered with precision and artistic vision.
                             </p>
                         </div>

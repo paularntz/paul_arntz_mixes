@@ -172,8 +172,8 @@ export default function Page() {
                             Ready to Work Together?
                         </h3>
                         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                            Whether you're working on your next single, album, or audio project, 
-                            let's discuss how we can bring your vision to life.
+                            Whether you&apos;re working on your next single, album, or audio project, 
+                            let&apos;s discuss how we can bring your vision to life.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a 
