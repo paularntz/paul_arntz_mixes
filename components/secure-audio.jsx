@@ -126,7 +126,7 @@ function SecureAudioPlayer({ url, type }) {
                 }
             };
         }
-    }, [hasStartedPlaying]);
+    }, [hasStartedPlaying, currentlyPlayingRef]);
 
     return (
         <div className="relative">
