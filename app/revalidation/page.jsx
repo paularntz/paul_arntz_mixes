@@ -73,6 +73,17 @@ async function RandomWikiArticle() {
         next: { revalidate: revalidateTTL, tags: [tagName] }
     });
 
+    if (!randomWiki.ok) {
+        const text = await randomWiki.text();
+        throw new Error(`Failed to fetch ${randomWikiUrl}: ${randomWiki.status} ${randomWiki.statusText}. Response body: ${text}`);
+    }
+
+    const contentType = randomWiki.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+        const text = await randomWiki.text();
+        throw new Error(`Expected JSON but got ${contentType}. Body: ${text}`);
+    }
+
     const content = await randomWiki.json();
     let extract = content.extract;
     if (extract.length > maxExtractLength) {
