@@ -19,7 +19,7 @@ const tracks = [
     },
     {
         key: "1",
-        url: "https://www.dropbox.com/scl/fi/9jcivfddrw3tcy82e2usy/2025-10-29-Pile-Driving-Miss-Daisy.wav?rlkey=hp0g6s61h4jbemwg5mkkuqypp&dl=1",
+        url: "https://www.dropbox.com/scl/fi/9jcivfddrw3tcy82e2usy/2025-10-29-Pile-Driving-Miss-Daisy.wav?rlkey=hp0g6s61h4jbemwg5mkkuqypp&raw=1",
         title: "Pile Driving Miss Daisy",
         artist: "Jeff Berlin",
         type: "audio/wav",
@@ -61,7 +61,7 @@ const tracks = [
     },
     {
         key: "2",
-        url: "https://www.dropbox.com/scl/fi/ykpnio6qpm2hkgejq8ath/2025-09-30-Salmon-Dave.wav?rlkey=yf8r2joas4o3vni2gbt5evzgt&dl=1",
+        url: "https://www.dropbox.com/scl/fi/ykpnio6qpm2hkgejq8ath/2025-09-30-Salmon-Dave.wav?rlkey=yf8r2joas4o3vni2gbt5evzgt&raw=1",
         title: "Salmon Dave",
         artist: "Jeff Berlin",
         type: "audio/wav",
