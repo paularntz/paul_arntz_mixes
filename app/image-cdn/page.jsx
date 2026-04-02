@@ -53,66 +53,85 @@ detection, so format is set to WebP.
 
 export default function Page() {
     return (
-        <div className="flex flex-col gap-6 sm:gap-12">
-            <section className="flex flex-col items-start gap-6 sm:gap-8">
-                <ContextAlert addedChecksFunction={
-                    (ctx) => {
-                        return ctx === "dev" ? devModeWarning : null;
-                    }
-                } />
-                <h1 className="mb-0">Image CDN</h1>
-            </section>
-            <section>
-                <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Using next/image component</h2>
-                <Markdown content={nextImageSnippet} />
-                <div
-                    className="mt-8 overflow-hidden border-2 border-white rounded-lg relative max-w-screen-lg"
-                    style={{ aspectRatio: '3/2' }}
-                >
-                    <Image
-                        src="/images/corgi.jpg"
-                        priority
-                        fill={true}
-                        style={{ objectFit: 'contain' }}
-                        sizes="(max-width: 1024px) 100vw, 1024px"
-                        alt="Corgi"
-                    />
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+            <div className="container mx-auto px-4 py-12 max-w-6xl">
+                <div className="text-center mb-16">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                        Image CDN
+                    </h1>
+                    <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
                 </div>
-                <span className="text-sm italic">
-                    Credit: photo by{' '}
-                    <a href="https://unsplash.com/@alvannee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-                        Alvan Nee
-                    </a>{' '}
-                    on{' '}
-                    <a href="https://unsplash.com/photos/long-coated-white-and-brown-dog-lvFlpqEvuRM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-                        Unsplash
-                    </a>
-                </span>
-            </section>
 
-            <section>
-                <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
-                    Original vs. optimized image: can you tell the difference?
-                </h2>
-                <Markdown content={originalVsCdnSnippet} />
-                <div className="diff aspect-[3/2] rounded-lg border-2 border-white mt-8">
-                    <div className="diff-item-1">
-                        <div>
-                            <ImageWithSizeOverlay
-                                srcSet={sampleImageSrcSet}
-                                sizes={sampleImageSrcSet}
-                                overlayPosition="right"
+                <div className="space-y-12">
+                    <section>
+                        <ContextAlert addedChecksFunction={
+                            (ctx) => {
+                                return ctx === "dev" ? devModeWarning : null;
+                            }
+                        } />
+                    </section>
+
+                    <section className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl">
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Using next/image component</h2>
+                        <Markdown content={nextImageSnippet} />
+                        <div
+                            className="mt-8 overflow-hidden border-2 border-gray-600 rounded-lg relative max-w-4xl mx-auto"
+                            style={{ aspectRatio: '3/2' }}
+                        >
+                            <Image
+                                src="/images/corgi.jpg"
+                                priority
+                                fill={true}
+                                style={{ objectFit: 'contain' }}
+                                sizes="(max-width: 1024px) 100vw, 1024px"
+                                alt="Corgi"
                             />
                         </div>
-                    </div>
-                    <div className="diff-item-2">
-                        <div>
-                            <ImageWithSizeOverlay src="/images/corgi.jpg" />
+                        <div className="mt-4 text-center">
+                            <span className="text-sm italic text-gray-400">
+                                Credit: photo by{' '}
+                                <a 
+                                    href="https://unsplash.com/@alvannee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                                    className="text-blue-400 hover:text-blue-300 transition-colors"
+                                >
+                                    Alvan Nee
+                                </a>{' '}
+                                on{' '}
+                                <a 
+                                    href="https://unsplash.com/photos/long-coated-white-and-brown-dog-lvFlpqEvuRM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                                    className="text-blue-400 hover:text-blue-300 transition-colors"
+                                >
+                                    Unsplash
+                                </a>
+                            </span>
                         </div>
-                    </div>
-                    <div className="diff-resizer"></div>
+                    </section>
+
+                    <section className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl">
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                            Original vs. optimized image: can you tell the difference?
+                        </h2>
+                        <Markdown content={originalVsCdnSnippet} />
+                        <div className="diff aspect-[3/2] rounded-lg border-2 border-gray-600 mt-8 max-w-4xl mx-auto">
+                            <div className="diff-item-1">
+                                <div>
+                                    <ImageWithSizeOverlay
+                                        srcSet={sampleImageSrcSet}
+                                        sizes={sampleImageSrcSet}
+                                        overlayPosition="right"
+                                    />
+                                </div>
+                            </div>
+                            <div className="diff-item-2">
+                                <div>
+                                    <ImageWithSizeOverlay src="/images/corgi.jpg" />
+                                </div>
+                            </div>
+                            <div className="diff-resizer"></div>
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         </div>
     );
 }

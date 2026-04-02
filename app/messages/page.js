@@ -1,70 +1,25 @@
 // app/messages/page.js
 "use client"
-import { useState, useEffect } from 'react';
-import { db, collection, getDocs, deleteDoc, doc } from '../../firebase'; // Import deleteDoc and doc
+import { useEffect } from 'react';
 
 export default function MessagesPage() {
-  const [messages, setMessages] = useState([]);
-
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        // Reference to the 'messages' collection
-        const messagesCollection = collection(db, 'messages');
-        // Fetch the documents
-        const messageSnapshot = await getDocs(messagesCollection);
-        // Extract the data
-        const messageList = messageSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        // Set the state
-        setMessages(messageList);
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
-    };
-
-    fetchMessages();
+    // Redirect to contact page since messages are now handled via Netlify Forms
+    window.location.href = '/messages/contact';
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      // Reference to the document to delete
-      const messageDoc = doc(db, 'messages', id);
-      // Delete the document
-      await deleteDoc(messageDoc);
-      // Remove the deleted message from state
-      setMessages(messages.filter(message => message.id !== id));
-    } catch (error) {
-      console.error('Error deleting message:', error);
-    }
-  };
-
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Messages</h1>
-      {messages.length === 0 ? (
-        <p>No messages yet.</p>
-      ) : (
-        <ul className="space-y-4">
-          {messages.map((message) => (
-            <li key={message.id} className="p-4 border rounded">
-              <p><strong>Name:</strong> {message.name}</p>
-              <p><strong>Email:</strong> {message.email}</p>
-              <p><strong>Phone:</strong> {message.phone}</p>
-              <p><strong>Message:</strong> {message.message}</p>
-              <p><strong>Date:</strong> {message.date}</p>
-              <button
-                onClick={() => handleDelete(message.id)}
-                className="bg-red-500 text-white p-2 rounded hover:bg-red-600 mt-2"
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center px-4">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+          <svg className="w-8 h-8 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+        <h1 className="text-2xl font-bold text-white mb-4">Redirecting to Contact...</h1>
+        <p className="text-gray-400">If you are not automatically redirected, <a href="/messages/contact" className="text-blue-400 hover:text-blue-300">click here</a>.</p>
+      </div>
     </div>
   );
 }
