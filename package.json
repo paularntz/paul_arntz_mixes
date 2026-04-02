@@ -11,6 +11,7 @@
     "dependencies": {
         "@madzadev/audio-player": "^2.1.13",
         "@netlify/blobs": "^7.3.0",
+        "@next/swc-darwin-arm64": "^14.2.8",
         "blobshape": "^1.0.0",
         "bright": "^0.8.5",
         "firebase": "^10.13.1",
