@@ -75,9 +75,7 @@ export default function Page() {
                             <span className="bg-purple-500/10 text-purple-400 px-6 py-3 rounded-full border border-purple-500/20 backdrop-blur-md">
                                 Music Production
                             </span>
-                            <span className="bg-cyan-500/10 text-cyan-400 px-6 py-3 rounded-full border border-cyan-500/20 backdrop-blur-md">
-                                Video Post-Production
-                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -86,7 +84,7 @@ export default function Page() {
             <div className="container mx-auto px-4 py-12 max-w-7xl relative z-10">
 
                 {/* Services Section */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid md:grid-cols-2 gap-8 mb-16">
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] hover:border-blue-500/50 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
@@ -106,25 +104,7 @@ export default function Page() {
                         </a>
                     </div>
 
-                    <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] hover:border-purple-500/50 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="absolute -right-10 -top-10 w-40 h-40 bg-[url('/images/redesign/video_post.png')] bg-cover bg-center rounded-full opacity-20 group-hover:scale-110 transition-transform duration-700 blur-[2px]"></div>
-                        <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30 relative z-10">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <h3 className="text-2xl font-bold text-white mb-4 relative z-10">Video Post-Production</h3>
-                        <p className="text-gray-400 leading-relaxed mb-8 font-light relative z-10">
-                            Complete video and audio post-production services. From non-linear editing and HDR color grading to sound design and final layback.
-                        </p>
-                        <a href="/video-post-production" className="inline-flex items-center text-purple-400 font-semibold hover:text-purple-300 transition-colors no-underline group-hover:translate-x-2 duration-300 relative z-10">
-                            Explore Services
-                            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                    </div>
+
 
                     <div className="bg-black/40 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] hover:border-cyan-500/50 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -180,7 +160,7 @@ export default function Page() {
                             Let&apos;s Make It Happen.
                         </h3>
                         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                            From your next track or record to complete video post-production, we&apos;ll shape it into something that feels and sounds exactly right.
+                            From your next track or record to complete audio post-production, we&apos;ll shape it into something that feels and sounds exactly right.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a 
